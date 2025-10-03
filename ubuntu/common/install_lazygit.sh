@@ -12,7 +12,7 @@ else
   rm lazygit*
 fi
 
-if command_exists lg; then
+if grep -q 'alias lg="lazygit"' ~/.zshrc; then
   echo "lg alias already exists"
 else
   echo "Adding lg alias for lazygit to .zshrc file"

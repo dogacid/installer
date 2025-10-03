@@ -13,6 +13,7 @@ else
   sudo tar xf fastfetch.tar.gz --strip-components=3 -C /usr/local/bin fastfetch-linux-amd64/usr/bin/fastfetch
   fastfetch --version
   rm -rf fastfetch.tar.gz
+  echo "fastfetch" >>~/.zshrc
 fi
 
 echo "--- Fastfetch setup complete. ---"

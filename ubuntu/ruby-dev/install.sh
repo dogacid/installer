@@ -40,8 +40,14 @@ source ../common/install_lazydocker.sh
 # --- Step 10: Install fastfetch
 source ../common/install_fastfetch.sh
 
+# --- Install 1password CLI ---
+source ../common/install_1password_cli.sh
+
 # --- Step 11 mise and ruby ---
 source ./install_mise_ruby.sh
+
+# --- Step 12 rails ---
+source ./install_rails.sh
 
 # --- Final Steps ---
 
