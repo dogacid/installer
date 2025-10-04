@@ -43,6 +43,9 @@ source ../common/install_fastfetch.sh
 # --- Install 1password CLI ---
 source ../common/install_1password_cli.sh
 
+# --- Install glow ---
+source ../common/install_glow.sh
+
 # --- Step 11 mise and ruby ---
 source ./install_mise_ruby.sh
 
