@@ -4,7 +4,7 @@
 sudo apt update -y
 
 # Install things common to many of the packages
-sudo apt install build-essential rustc libssl-dev libyaml-dev zlib1g-dev libgmp-dev git unzip stow ripgrep btop
+sudo apt install build-essential rustc libssl-dev libyaml-dev zlib1g-dev libgmp-dev git unzip stow ripgrep btop certbot
 
 # --- Step 1: Install Zsh and Set as Default Shell ---
 source ../common/install_zsh.sh
@@ -51,6 +51,10 @@ source ./install_mise_ruby.sh
 
 # --- Step 12 rails ---
 source ./install_rails.sh
+
+# --- caddy and code server ---
+source ../common/install_caddy.sh
+source ../common/install_code_server.sh
 
 # --- Final Steps ---
 
