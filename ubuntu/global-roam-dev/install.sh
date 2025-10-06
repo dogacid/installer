@@ -4,7 +4,7 @@
 sudo apt update -y
 
 # Install things common to many of the packages
-sudo apt install build-essential rustc libssl-dev libyaml-dev zlib1g-dev libgmp-dev git unzip stow ripgrep btop certbot sqlite3
+sudo apt install build-essential rustc libssl-dev libyaml-dev zlib1g-dev libgmp-dev git unzip stow ripgrep btop certbot
 
 # --- Step 1: Install Zsh and Set as Default Shell ---
 source ../common/install_zsh.sh
