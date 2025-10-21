@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# === CONFIGURATION ===
+# !!! IMPORTANT !!!
+# Change these variables to your remote machine's user and hostname.
+REMOTE_USER="marc"
+REMOTE_HOST="gr-dev"
+# =====================
+
+# The directory where this script and its config files are located.
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+
+# Check if a project name was provided.
+if [ -z "$1" ]; then
+  echo "Usage: gr-dev <project_name>"
+  echo "Available projects:"
+  # List available config files (excluding the script itself).
+  ls -1 "$SCRIPT_DIR" | grep -v "gr-dev"
+  exit 1
+fi
+
+PROJECT_NAME=$1
+CONFIG_FILE="$SCRIPT_DIR/$PROJECT_NAME"
+
+# Check if the configuration file exists.
+if [ ! -f "$CONFIG_FILE" ]; then
+  echo "Error: Configuration for '$PROJECT_NAME' not found."
+  echo "Available projects:"
+  ls -1 "$SCRIPT_DIR" | grep -v "gr-dev"
+  exit 1
+fi
+
+# Read the folder and port from the config file.
+REMOTE_FOLDER=$(sed -n '1p' "$CONFIG_FILE")
+LOCAL_PORT=$(sed -n '2p' "$CONFIG_FILE")
+REMOTE_PORT=$LOCAL_PORT
+
+# Check if the config file was valid.
+if [ -z "$REMOTE_FOLDER" ] || [ -z "$LOCAL_PORT" ]; then
+  echo "Error: Invalid configuration file '$CONFIG_FILE'."
+  echo "The file should contain two lines: the remote directory and the port number."
+  exit 1
+fi
+
+# Announce the connection details.
+echo "Connecting to $REMOTE_USER@$REMOTE_HOST..."
+echo "  Remote folder: $REMOTE_FOLDER"
+echo "  Forwarding port: localhost:$LOCAL_PORT -> remote:$REMOTE_PORT"
+echo ""
+
+# Execute the SSH command.
+# -t Allocates a pseudo-terminal, which is required for an interactive shell.
+# The command string executes 'cd' and then starts a new bash session.
+exec ssh -L "$LOCAL_PORT:localhost:$REMOTE_PORT" "$REMOTE_USER@$REMOTE_HOST" -t "cd "$REMOTE_FOLDER" && zsh"
