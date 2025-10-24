@@ -33,6 +33,9 @@ source ../common/install_gemini.sh
 # --- Step 8 Install Docker ---
 source ../common/install_docker.sh
 
+# --- Step 8.1: Install Azure CLI ---
+source ../common/install_azure_cli.sh
+
 # --- Step 9: Install Lazygit and Lazydocker ---
 source ../common/install_lazygit.sh
 source ../common/install_lazydocker.sh
@@ -42,6 +45,9 @@ source ../common/install_fastfetch.sh
 
 # --- Install 1password CLI ---
 source ../common/install_1password_cli.sh
+
+# --- Install pass ---
+source ../common/install_pass.sh
 
 # --- Install glow ---
 source ../common/install_glow.sh
