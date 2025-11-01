@@ -58,6 +58,9 @@ source ./install_mise_ruby.sh
 # --- Step 12 rails ---
 source ./install_rails.sh
 
+# --- Step 13 dotnet ---
+source ./install_dotnet.sh
+
 # --- caddy and code server ---
 source ../common/install_caddy.sh
 source ../common/install_code_server.sh
